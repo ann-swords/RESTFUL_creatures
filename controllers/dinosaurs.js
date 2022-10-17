@@ -16,7 +16,7 @@ router.get('/new', (req,res)=>{
     res.render('dinosaurs/new')
 })
 
-// anything with column should be down, cause it will be confused when it comes to index
+//anything with column should be down, cause it will be confused when it comes to index
 router.get('/:idx', (req,res)=>{
     //get dinosaurs
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
@@ -29,6 +29,7 @@ router.get('/:idx', (req,res)=>{
 
 })
 
+//Adding new data to the json file
 router.post('/',(req, res)=>{
     console.log('This is the Request Body: ', req.body)
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
@@ -39,6 +40,7 @@ router.post('/',(req, res)=>{
     res.redirect('/dinosaurs')
 })
 
+//Delete the data
 router.delete('/:idx', (req, res)=>{
     console.log('This is my Req Param Object', req.params)
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
@@ -51,7 +53,7 @@ router.delete('/:idx', (req, res)=>{
     res.redirect('/dinosaurs')
 })
 
-
+//The Edit page 
 router.get('/edit/:idx', (req, res) =>{
     //Grab dino data
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
@@ -62,6 +64,7 @@ router.get('/edit/:idx', (req, res) =>{
 
 })
 
+//Edit the data
 router.put('/:dinoId', (req, res)=>{
     //Grab all Dino data
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
