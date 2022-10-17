@@ -5,7 +5,7 @@ const app = express()
 app.set('view engine', 'ejs')
 //Middleware
 app.use(ejsLayouts)
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false})) //for the request body in the form
 
 //Controllers
 app.use('/dinosaurs', require('./controllers/dinosaurs'))

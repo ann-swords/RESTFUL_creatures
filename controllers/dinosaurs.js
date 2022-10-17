@@ -31,6 +31,11 @@ router.get('/:idx', (req,res)=>{
 
 router.post('/',(req, res)=>{
     console.log('This is the Request Body: ', req.body)
+    let dinosaurs = fs.readFileSync('./dinosaurs.json')
+    let dinoData = JSON.parse(dinosaurs) //convert it into js object
+    //req.body comes from the form.
+    dinoData.push(req.body)
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
     res.redirect('/dinosaurs')
 })
 
